@@ -16,22 +16,18 @@ const mockImages = mockUrls.map((url, index) => ({
 }))
 
 export default async function HomePage() {
-  const posts = await db.query.posts.findMany();
-  console.log(posts);
+  const images = await db.query.images.findMany({
+    orderBy: (model, { desc }) => [desc(model.id)]
+  });
+  console.log(images);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center">
       <div className="flex flex-wrap gap-4">
-        {
-          posts.map((post) => (
-            <div key={post.id} className="w-48">
-              {post.name}
-            </div>
-          ))
-        }
-        {[...mockImages, ...mockImages, ...mockImages, ...mockImages].map((image, index) => (
+        {images.map((image, index) => (
           <div key={index} className="w-48">
-            <img src={image.url} alt={`Image ${image.id}`} width={200} height={200} />
+            <img src={image.url} alt={image.name} width={200} height={200} />
+            <p>{image.name}</p>
           </div>
         ))}
       </div>
