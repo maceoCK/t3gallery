@@ -7,6 +7,7 @@ import { type Metadata } from "next";
 import { ourFileRouter } from "./api/uploadthing/core";
 import { extractRouterConfig } from "uploadthing/server";
 import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "T3 Image Gallery",
@@ -31,6 +32,7 @@ export default function RootLayout({
           </div>
           {modal}
           <div id="modal-root" />
+          <Toaster position="bottom-right" theme="dark" />
         </body>
       </html>
     </ClerkProvider>
