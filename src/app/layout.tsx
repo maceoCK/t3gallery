@@ -23,8 +23,12 @@ export default function RootLayout({
       <html lang="en" className={`${GeistSans.variable}`}>
         <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
         <body className="flex min-h-screen flex-col gap-y-4">
-          <TopNav />
-          {children}
+          <div className="h-screen grid grid-rows-[auto_1fr]">
+            <TopNav />
+            <main className="overflow-y-scroll">
+              {children}
+            </main>
+          </div>
           {modal}
           <div id="modal-root" />
         </body>
