@@ -1,4 +1,4 @@
-import { getImageById } from "~/server/db/queries";
+import { getImageById } from "~/server/queries";
 import { Modal } from "./modal";
 import FullImagePage from "~/components/full-image-page";
 
