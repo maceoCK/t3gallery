@@ -31,7 +31,17 @@ const coreConfig = {
     ];
   },
   // This is required to support PostHog trailing slash API requests
-  skipTrailingSlashRedirect: true, 
+  skipTrailingSlashRedirect: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'utfs.io',
+        port: '',
+        pathname: '/f/**',
+      },
+    ],
+  },
 };
 
 const config = withSentryConfig(coreConfig, {

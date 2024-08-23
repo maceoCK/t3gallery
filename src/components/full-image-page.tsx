@@ -2,7 +2,13 @@ import { clerkClient } from "@clerk/nextjs/server";
 import { getImageById } from "~/server/db/queries";
 
 export default async function PhotoModal(props: { id: number }) {
-  const image = await getImageById(props.id);
+  let image;
+  try {
+    image = await getImageById(props.id);
+  } catch (error) {
+    console.error("Error fetching image:", error);
+    return <div>Image not found</div>;
+  }
   const uploaderInfo = await clerkClient.users.getUser(image.userId);
   return (
     <div className="flex h-full w-full min-w-0">
