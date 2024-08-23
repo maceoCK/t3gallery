@@ -83,6 +83,8 @@ export default function SimpleUploadButton() {
                 router.refresh();
             },
             onUploadError: (error) => {
+                posthog.capture("upload-error", { error: error.message });
+                toast.dismiss("upload-begin");
                 toast.error(error.message);
             },
             onUploadBegin: () => {
