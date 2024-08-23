@@ -9,7 +9,7 @@ export default async function PhotoModal(props: { id: number }) {
     console.error("Error fetching image:", error);
     return <div>Image not found</div>;
   }
-  const uploaderInfo = await clerkClient.users.getUser(image.userId);
+  const uploaderInfo = await clerkClient().users.getUser(image.userId);
   return (
     <div className="flex h-full w-full min-w-0">
       <div className="flex flex-shrink flex-grow items-center justify-center border-r border-gray-200">
